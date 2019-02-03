@@ -1,1 +1,15 @@
+Title:<br>
+<%= @post.title %>
+<br><br>
 
+<%= @post.content %>
+
+Categories: <br>
+<% @post.categories.each do |cat| %>
+  <%= cat.name %><br>
+<% end %>
+
+Comments: <br>
+<% @post.comments.each do |comment| %>
+  <%= comment.content %><br>
+<% end %>
