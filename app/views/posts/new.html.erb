@@ -7,6 +7,8 @@
   <%= f.label "Content" %>
   <%= f.text_area :content %>
 
+  <% # generates a check box named post[category_ids][] for each category %>
+  <% # will use the id as the value, and the name as the label %>
   <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
 
   <%= f.fields_for :categories, @post.categories.build do |categories_fields| %>
