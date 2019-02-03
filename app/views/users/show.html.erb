@@ -1,3 +1,3 @@
 <%= @user.comments.each do |comment| %>
-  <%= link_to comment.post.title, comment_path(comment) %><br>
+  <%= link_to comment.post.title, post_path(comment.post) %><br>
 <% end %>
