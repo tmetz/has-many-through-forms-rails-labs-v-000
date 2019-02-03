@@ -11,6 +11,7 @@ Categories: <br>
 
 Comments: <br>
 <% @post.comments.each do |comment| %>
+  <%= comment.user.username %> says: 
   <%= comment.content %><br>
 <% end %>
 
@@ -20,7 +21,9 @@ Users who commented: <br>
 <% end %>
 
 Add comment:<br>
-<%= form_for(@post) do |f| %>
-  <%= f.collection_select :user_ids, User.all, :id, :username %>
-  <%= f.textarea :content %>
+<%= form_for @post.comments.build do |f| %>
+  <%= f.collection_select :user_id, User.all, :id, :username, include_blank: 'Choose a user' %>
+  <%= f.text_field :content %>
+  <%= f.hidden_field :post_id %>
+  <%= f.submit %>
 <% end %>
